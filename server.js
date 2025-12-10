@@ -38,9 +38,13 @@ if (!MONGODB_URI) {
   console.error('❌ Missing MONGODB_URI in environment variables');
   process.exit(1);
 }
-
+const allowedOrigins = [
+  'http://localhost:3000',          // 本地前端（如果你dev用3000）
+  'http://localhost:5173',          // 本地 Vite（如果用5173）
+  'https://readwise-webpage.onrender.com', // ⬅️ 你的线上前端域名
+];
 app.use(cors({
-  origin: ['http://localhost:3000'],
+  origin: true,      // 反射请求的 Origin 到 Access-Control-Allow-Origin
   credentials: true,
 }));
 app.use(express.json());
