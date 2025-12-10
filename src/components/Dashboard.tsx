@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/
 import { Progress } from './ui/progress';
 import { Button } from './ui/button';
 import type { Book } from '../App';
-
+import { API_BASE } from "../config";
 type Page = 'login' | 'dashboard' | 'search' | 'library' | 'ai-plan' | 'notes' | 'settings';
 
 interface DashboardProps {
@@ -27,7 +27,7 @@ export function Dashboard({ onNavigate, myBooks }: DashboardProps) {
 
     const fetchSettings = async () => {
       try {
-        const res = await fetch('/api/user/settings', {
+        const res = await fetch(API_BASE+'/api/user/settings', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -49,7 +49,7 @@ export function Dashboard({ onNavigate, myBooks }: DashboardProps) {
 
     const pingStreak = async () => {
       try {
-        const res = await fetch('/api/user/streak-ping', {
+        const res = await fetch(API_BASE+'/api/user/streak-ping', {
           method: 'POST',
           headers: {
             Authorization: `Bearer ${token}`,

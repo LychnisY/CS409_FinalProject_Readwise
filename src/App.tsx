@@ -8,6 +8,7 @@ import { AIReadingPlan } from './components/AIReadingPlan';
 import { NotesPage } from './components/NotesPage';
 import { SettingsPage } from './components/SettingsPage';
 import { Toaster } from './components/ui/sonner';
+import { API_BASE } from "./config";
 
 type Page = 'login' | 'dashboard' | 'search' | 'library' | 'ai-plan' | 'notes' | 'settings';
 
@@ -46,7 +47,7 @@ export default function App() {
 
     const fetchReadingItems = async () => {
       try {
-        const res = await fetch('/api/reading-items', {
+        const res = await fetch(API_BASE+'/api/reading-items', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -130,7 +131,7 @@ export default function App() {
 
     if (token) {
       try {
-        const res = await fetch('/api/reading-items', {
+        const res = await fetch(API_BASE+'/api/reading-items', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

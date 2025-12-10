@@ -1,6 +1,6 @@
 import { Search, Library, Settings, BookOpen } from 'lucide-react';
 import { Button } from './ui/button';
-
+import { API_BASE } from "../config";
 type Page = 'login' | 'dashboard' | 'search' | 'library' | 'ai-plan' | 'notes' | 'settings';
 
 interface NavigationProps {

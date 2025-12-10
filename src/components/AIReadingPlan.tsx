@@ -19,7 +19,7 @@ import { Label } from './ui/label';
 import { Badge } from './ui/badge';
 import type { Book } from '../App';
 import { toast } from 'sonner';
-
+import { API_BASE } from '../config';
 interface AIReadingPlanProps {
   onAddBook: Omit<
     Book,
@@ -70,7 +70,7 @@ const handleGenerate = async (e: React.FormEvent) => {
   setGeneratedPlan(null);
 
   try {
-    const res = await fetch('/api/ai/reading-plan', {
+    const res = await fetch(API_BASE+'/api/ai/reading-plan', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

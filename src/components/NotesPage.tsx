@@ -14,7 +14,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from './ui/dialog';
-
+import { API_BASE } from "../config";
 interface Note {
   id: string;
   bookTitle: string;
@@ -41,7 +41,7 @@ export function NotesPage() {
 
     const fetchNotes = async () => {
       try {
-        const res = await fetch('/api/notes', {
+        const res = await fetch(API_BASE+'/api/notes', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -91,7 +91,7 @@ export function NotesPage() {
           .filter(Boolean),
       };
 
-      const res = await fetch('/api/notes', {
+      const res = await fetch(API_BASE+'/api/notes', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -5,7 +5,7 @@ import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
-
+import { API_BASE } from "../config";
 interface LoginPageProps {
   onLogin: () => void;
 }
@@ -29,7 +29,7 @@ export function LoginPage({ onLogin }: LoginPageProps) {
     setAuthError(null);
 
     try {
-      const res = await fetch('/api/auth/login', {
+      const res = await fetch(API_BASE+'/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -58,7 +58,7 @@ export function LoginPage({ onLogin }: LoginPageProps) {
     setAuthError(null);
 
     try {
-      const res = await fetch('/api/auth/register', {
+      const res = await fetch(API_BASE+'/api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password, name }),

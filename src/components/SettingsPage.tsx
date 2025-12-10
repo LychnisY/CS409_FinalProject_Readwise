@@ -7,6 +7,7 @@ import { Label } from './ui/label';
 import { Switch } from './ui/switch';
 import { Separator } from './ui/separator';
 import { Slider } from './ui/slider';
+import { API_BASE } from "../config";
 
 interface SettingsPageProps {
   onLogout: () => void;
@@ -39,7 +40,7 @@ export function SettingsPage({ onLogout, darkMode, onToggleDarkMode }: SettingsP
 
     const fetchSettings = async () => {
       try {
-        const res = await fetch('/api/user/settings', {
+        const res = await fetch(API_BASE+'/api/user/settings', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -72,7 +73,7 @@ export function SettingsPage({ onLogout, darkMode, onToggleDarkMode }: SettingsP
 
     setSaving(true);
     try {
-      const res = await fetch('/api/user/settings', {
+      const res = await fetch(API_BASE+'/api/user/settings', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -103,7 +104,7 @@ export function SettingsPage({ onLogout, darkMode, onToggleDarkMode }: SettingsP
     if (!token) return;
 
     try {
-      const res = await fetch('/api/user', {
+      const res = await fetch(API_BASE+'/api/user', {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${token}`,

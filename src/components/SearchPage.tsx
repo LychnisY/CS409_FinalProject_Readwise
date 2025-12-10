@@ -7,7 +7,7 @@ import { Badge } from './ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
 import type { Book } from '../App';
 import { toast } from 'sonner';
-
+import { API_BASE } from "../config";
 interface SearchPageProps {
   onAddBook: (
     book: Omit<Book, 'id' | 'addedDate' | 'status' | 'progress' | 'pagesRead' | 'lastRead'>
@@ -326,7 +326,7 @@ export function SearchPage({ onAddBook, isBookInLibrary }: SearchPageProps) {
     setAiRawText(null);
 
     try {
-      const res = await fetch('/api/ai/search-book', {
+      const res = await fetch(API_BASE+'/api/ai/search-book', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

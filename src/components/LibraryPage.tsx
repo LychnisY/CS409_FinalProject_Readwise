@@ -16,7 +16,7 @@ import {
   SelectValue,
 } from './ui/select';
 import type { Book } from '../App';
-
+import { API_BASE } from "../config";
 interface LibraryPageProps {
   myBooks: Book[];
   onDeleteBook: (bookId: number) => void;
@@ -58,7 +58,7 @@ export function LibraryPage({ myBooks, onDeleteBook, onUpdateBook }: LibraryPage
       if (!token) {
         return;
       }
-      await fetch('/api/reading-logs', {
+      await fetch(API_BASE+'/api/reading-logs', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
